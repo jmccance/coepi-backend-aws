@@ -3,11 +3,9 @@ terraform {
   required_providers {
     aws = ">= 2.56.0"
     template = "~> 2.1"
-
   }
 
   backend "s3" {
-    bucket = "tf-coepi-backend-bucket"
     key    = "prd/tfstate"
   }
 }

@@ -29,9 +29,14 @@ Then, run:
 2. [Install Terraform](https://www.terraform.io/downloads.html) 0.12 or newer
    (Recommendation is to install via Choco for Windows/Homebrew for macOS/package managers for
    *nix)
-3. Run the Build step above
+3. Run the "Build" step above
 4. `cd` to the `terraform` folder in this repo
-5. Create an S3 bucket to store Terraform's statefile: `aws s3api create-bucket --bucket tf-coepi-backend-bucket --region us-east-1`
+5. Create an S3 bucket to store Terraform's statefile. Note that S3 bucket names are universal, so you'll need to pick a unique name to replace `$TFSTATE_BUCKET` below.
+
+    ```sh
+    aws s3api create-bucket --bucket $TFSTATE_BUCKET --region us-east-1
+    ```
+   
 6. Run `terraform init -backend-config="region=us-east-1"` to tell Terraform to
    use the state bucket you created in `us-east-1`
 7. Run `terraform plan` to see what changes will be applied to
