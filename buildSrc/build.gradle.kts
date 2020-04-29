@@ -4,6 +4,12 @@ plugins {
 
 gradlePlugin {
     plugins {
+        register("ktlint-plugin") {
+            id = "ktlint"
+            implementationClass = "KtlintPlugin"
+            description = "Format Kotlin files with ktlint"
+        }
+
         register("project-defaults-plugin") {
             id = "project-defaults"
             implementationClass = "ProjectDefaultsPlugin"

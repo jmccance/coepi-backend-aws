@@ -20,6 +20,8 @@ class ProjectDefaultsPlugin : Plugin<Project> {
 
 private fun Project.configurePlugins() {
     plugins.apply("java-library")
+    plugins.apply("ktlint")
+
     plugins.apply("org.jetbrains.kotlin.jvm")
 }
 
