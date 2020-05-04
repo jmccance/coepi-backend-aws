@@ -1,12 +1,12 @@
 package org.coepi.api.v4.reports
 
+import java.nio.ByteBuffer
 import java.time.Clock
 import java.time.LocalDate
 import org.coepi.api.common.time.toUtcLocalDate
 import org.coepi.api.v4.dao.TCNReportRecord
 import org.coepi.api.v4.dao.TCNReportsDao
 import org.coepi.api.v4.toInterval
-import java.nio.ByteBuffer
 
 class TCNReportService(
     private val clock: Clock,

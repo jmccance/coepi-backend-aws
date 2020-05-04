@@ -7,8 +7,8 @@ import com.amazonaws.services.dynamodbv2.local.main.ServerRunner
 
 class LocalDynamoDB {
 
-    fun startDynamoDb(){
-        val localUrl= "http://localhost:9000"
+    fun startDynamoDb() {
+        val localUrl = "http://localhost:9000"
         val region = "us-west-2"
 
         println("Trying to start dynamo db at $localUrl")
@@ -17,8 +17,8 @@ class LocalDynamoDB {
         server.start()
 
         val ddb = AmazonDynamoDBClientBuilder.standard()
-                .withEndpointConfiguration(AwsClientBuilder.EndpointConfiguration(localUrl, region))
-                .build()
+            .withEndpointConfiguration(AwsClientBuilder.EndpointConfiguration(localUrl, region))
+            .build()
         var ddbMapper = DynamoDBMapper(ddb)
     }
 }

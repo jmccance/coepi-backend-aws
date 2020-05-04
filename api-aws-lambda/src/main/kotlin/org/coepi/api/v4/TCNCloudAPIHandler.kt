@@ -33,9 +33,11 @@ class TCNCloudAPIHandler(
     )
 
     override fun handleRequest(input: APIGatewayProxyRequestEvent, context: Context): APIGatewayProxyResponseEvent {
-        logger.info("Processing request: ${context.awsRequestId}. " +
+        logger.info(
+            "Processing request: ${context.awsRequestId}. " +
                 "Query params: ${input.queryStringParameters}. " +
-                "Body: ${input.body}")
+                "Body: ${input.body}"
+        )
         try {
             if (input.httpMethod == "GET") {
                 logger.info("Handling GET Request for :${input.path}. ReqId: ${context.awsRequestId}")
@@ -46,8 +48,8 @@ class TCNCloudAPIHandler(
         } catch (ex: Exception) {
             logger.info("Failed to serve request: ${context.awsRequestId}. Cause: ${ex.message}")
             return APIGatewayProxyResponseEvent()
-                    .withStatusCode(500)
-                    .withBody("CoEpi Service Internal Failure")
+                .withStatusCode(500)
+                .withBody("CoEpi Service Internal Failure")
         }
     }
 

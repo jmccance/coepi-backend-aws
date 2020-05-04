@@ -4,9 +4,9 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression
 import com.amazonaws.services.dynamodbv2.model.AttributeValue
-import org.apache.commons.lang3.Validate
 import java.time.LocalDate
 import java.util.*
+import org.apache.commons.lang3.Validate
 
 class TCNReportsDao {
     private val dynamoMapper: DynamoDBMapper
@@ -22,10 +22,12 @@ class TCNReportsDao {
         this.dynamoMapper = DynamoDBMapper(ddbClient)
     }
 
-    fun addReport(reportData: ByteArray,
-                  date: LocalDate,
-                  intervalNumber: Long,
-                  timestamp: Long): TCNReportRecord {
+    fun addReport(
+        reportData: ByteArray,
+        date: LocalDate,
+        intervalNumber: Long,
+        timestamp: Long
+    ): TCNReportRecord {
         Validate.isTrue(reportData.isNotEmpty(), "reportData cannot be empty")
         Validate.isTrue(intervalNumber > 0, "intervalNumber should be positive")
         Validate.isTrue(timestamp > 0, "timestamp needs to be positive")

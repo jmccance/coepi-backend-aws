@@ -4,13 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import java.time.LocalDate
+import java.util.*
 import org.assertj.core.api.Assertions.assertThat
 import org.coepi.api.Fixtures
 import org.coepi.api.common.toByteBuffer
 import org.coepi.api.v4.reports.TCNReportService
 import org.junit.jupiter.api.Test
-import java.time.LocalDate
-import java.util.*
 
 class TCNHttpHandlerTest {
 
@@ -52,4 +52,3 @@ class TCNHttpHandlerTest {
         assertThat(response).isInstanceOf(Ok::class.java)
     }
 }
-

@@ -1,6 +1,10 @@
 package org.coepi.api.v4.http
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import java.nio.ByteBuffer
+import java.time.LocalDate
+import java.time.format.DateTimeParseException
+import java.util.*
 import org.coepi.api.InvalidTCNSignatureException
 import org.coepi.api.TCNClientException
 import org.coepi.api.UnexpectedIntervalLengthException
@@ -10,10 +14,6 @@ import org.coepi.api.common.toByteBuffer
 import org.coepi.api.v4.Intervals
 import org.coepi.api.v4.reports.TCNReportService
 import org.slf4j.LoggerFactory
-import java.nio.ByteBuffer
-import java.time.LocalDate
-import java.time.format.DateTimeParseException
-import java.util.*
 
 class TCNHttpHandler(
     private val objectMapper: ObjectMapper,
@@ -84,7 +84,7 @@ private fun parseQueryParameters(
             if (!parameters.containsKey(INTERVAL_LENGTH_MS_KEY)) {
                 throw TCNClientException(
                     "$INTERVAL_LENGTH_MS_KEY query parameter is required if " +
-                            " $INTERVAL_LENGTH_MS_KEY is provided"
+                        " $INTERVAL_LENGTH_MS_KEY is provided"
                 )
             }
             val intervalLengthMs = parameters[INTERVAL_LENGTH_MS_KEY]?.toLong()
@@ -92,7 +92,7 @@ private fun parseQueryParameters(
             if (intervalLengthMs != Intervals.INTERVAL_LENGTH_MS) {
                 throw UnexpectedIntervalLengthException(
                     "$intervalLengthMs is invalid for the date " +
-                            "$DATE_KEY. Please use ${Intervals.INTERVAL_LENGTH_MS} to calculate $INTERVAL_NUMBER_KEY"
+                        "$DATE_KEY. Please use ${Intervals.INTERVAL_LENGTH_MS} to calculate $INTERVAL_NUMBER_KEY"
                 )
             }
         }
@@ -101,7 +101,8 @@ private fun parseQueryParameters(
     } catch (ex: NumberFormatException) {
         throw TCNClientException(
             "$INTERVAL_NUMBER_KEY or $INTERVAL_LENGTH_MS_KEY in " +
-                    "illegal number format.", ex
+                "illegal number format.",
+            ex
         )
     }
 
